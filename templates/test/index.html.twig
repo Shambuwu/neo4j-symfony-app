@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table id="myTable" class="display w-50">
+        <thead>
+        <tr>
+            <th>Movie</th>
+            <th>Released</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for result in results %}
+            <tr>
+                <td>{{ result.get('n').getProperty('title') }}</td>
+                <td>{{ result.get('n').getProperty('released') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
