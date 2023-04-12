@@ -1,0 +1,24 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - "9000:9000"
+    command: "php -S 0:9000 -t ./public && npm run watch"
+
+  db:
+    image: neo4j:latest
+    restart: unless-stopped
+    environment:
+      - NEO4J_dbms_memory_pagecache_size=1G
+      - NEO4J_dbms.memory.heap.initial_size=1G
+      - NEO4J_dbms_memory_heap_max__size=1G
+    volumes:
+      - db:/var/lib/neo4j/data
+    ports:
+      - "7474:7474"
+
+volumes:
+  db:

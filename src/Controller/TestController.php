@@ -12,9 +12,6 @@ class TestController extends AbstractController
     #[Route('/test', name: 'app_test')]
     public function index(Neo4jClient $client): Response
     {
-        $test = $client->getAllEntities();
-        return $this->render('test/index.html.twig', [
-           'results' => $client->getAllEntities()
-        ]);
+        return new Response(json_encode($client->getAllEntities()));
     }
 }
