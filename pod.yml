@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: symfony-pod
+spec:
+  containers:
+    - name: symfony-pod
+      image: ghcr.io/shambuwu/network-visualizer-symfony:latest
+      command: ["php -S 0:9000 -t ./public && npm run watch"]
+  imagePullSecrets:
+    - name: dockerconfigjson-github-com
