@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use GraphAware\Neo4j\OGM\Annotations as OGM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @OGM\Node(label="Node")
@@ -16,22 +17,41 @@ class Node
 
     /**
      * @OGM\Property(type="string")
+     * @Assert\NotBlank()
      */
-    protected string $name;
+    protected string $type;
+
+    /**
+     * @OGM\Property(type="string")
+     * @Assert\NotBlank()
+     */
+    protected string $externalId;
 
     public function getId(): string
     {
         return $this->id;
     }
 
-    public function getName(): string
+    public function getType(): string
     {
-        return $this->name;
+        return $this->type;
     }
 
-    public function setName(string $name): self
+    public function setType(string $type): self
     {
-        $this->name = $name;
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getExternalId(): string
+    {
+        return $this->externalId;
+    }
+
+    public function setExternalId(string $externalId): self
+    {
+        $this->externalId = $externalId;
 
         return $this;
     }

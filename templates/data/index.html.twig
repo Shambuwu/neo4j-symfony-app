@@ -4,15 +4,15 @@
     <table id="myTable" class="display w-50">
         <thead>
         <tr>
-            <th>Movie</th>
-            <th>Released</th>
+            <th>ID</th>
+            <th>Type</th>
         </tr>
         </thead>
         <tbody>
-        {% for result in results %}
+        {% for node in results %}
             <tr>
-                <td>{{ result.get('n').getProperty('title') }}</td>
-                <td>{{ result.get('n').getProperty('released') }}</td>
+                <td>{{ node.getId() }}</td>
+                <td>{{ node.getType() }}</td>
             </tr>
         {% endfor %}
         </tbody>
