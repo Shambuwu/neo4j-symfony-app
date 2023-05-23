@@ -7,9 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class DataController extends AbstractController
+class IndexController extends AbstractController
 {
-    #[Route('/', name: 'app_data')]
+    #[Route('/index', name: 'app_data', methods: ['GET'])]
     public function index(Neo4jClient $client): Response
     {
         return $this->render('data/index.html.twig', [
