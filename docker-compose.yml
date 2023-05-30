@@ -17,7 +17,7 @@ services:
       - NEO4J_dbms_memory_heap_max__size=1G
     volumes:
       - db:/var/lib/neo4j/data
-      - ./short.cypher:/short.cypher
+      - ./test2.cypher:/test2.cypher
       - ./conf:/conf
     ports:
       - "7474:7474"

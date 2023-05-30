@@ -51,7 +51,16 @@ class QueryController extends AbstractController
         $em = $client->getEntityManager();
         $nodeRepository = $em->getRepository(Node::class);
         $nodes = $nodeRepository->findBy(array('type' => $type));
+        $nodesList = [];
 
-        return new JsonResponse($nodes);
+        foreach ($nodes as $node) {
+            $nodesList["nodes"][] = array(
+                "id" => $node->getId(),
+                "label" => $node->getType(),
+                "externalid" => $node->getExternalId()
+            );
+        }
+
+        return new JsonResponse($nodesList);
     }
 }
