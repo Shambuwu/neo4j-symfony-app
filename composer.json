@@ -22,7 +22,8 @@
         "symfony/validator": "6.2.*",
         "symfony/webpack-encore-bundle": "^1.16",
         "symfony/yaml": "6.2.*",
-        "twig/twig": "^2.0"
+        "twig/twig": "^2.0",
+        "ext-http": "*"
     },
     "config": {
         "allow-plugins": {

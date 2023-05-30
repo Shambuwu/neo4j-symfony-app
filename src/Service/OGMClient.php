@@ -13,7 +13,7 @@ class OGMClient
         string $url,
     )
     {
-        $this->entityManager = EntityManager::create('neo4j://db:7687');
+        $this->entityManager = EntityManager::create($url);
     }
 
     public function getEntityManager(): EntityManager

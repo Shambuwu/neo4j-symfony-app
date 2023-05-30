@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Node;
 use App\Service\OGMClient;
 use Exception;
+use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -23,7 +25,7 @@ class QueryController extends AbstractController
         ]);
     }
 
-    #[Route('/query', name: 'app_query', methods: ['POST'])]
+    #[Route('/insert', name: 'app_insert', methods: ['POST'])]
     public function insertNode(OGMClient $client, ValidatorInterface $validator) {
         $node = new Node();
         $node->setType("TWDIS");
@@ -41,5 +43,15 @@ class QueryController extends AbstractController
         $em->flush();
 
         return new Response("Successfully inserted node");
+    }
+
+    #[Route('/api/nodes/{type}', name: 'app_get_nodes', methods: ['GET'])]
+    public function getNodes(OGMClient $client, string $type): JsonResponse
+    {
+        $em = $client->getEntityManager();
+        $nodeRepository = $em->getRepository(Node::class);
+        $nodes = $nodeRepository->findBy(array('type' => $type));
+
+        return new JsonResponse($nodes);
     }
 }
