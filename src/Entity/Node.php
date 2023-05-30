@@ -21,11 +21,10 @@ class Node
      */
     protected string $type;
 
-    /**
-     * @OGM\Property(type="string")
-     * @Assert\NotBlank()
-     */
-    protected string $externalId;
+//    /**
+//     * @OGM\Property(type="string")
+//     */
+//    protected string $externalId;
 
     public function getId(): string
     {
@@ -44,15 +43,15 @@ class Node
         return $this;
     }
 
-    public function getExternalId(): string
-    {
-        return $this->externalId;
-    }
-
-    public function setExternalId(string $externalId): self
-    {
-        $this->externalId = $externalId;
-
-        return $this;
-    }
+//    public function getExternalId(): string
+//    {
+//        return $this->externalId;
+//    }
+//
+//    public function setExternalId(string $externalId): self
+//    {
+//        $this->externalId = $externalId;
+//
+//        return $this;
+//    }
 }
