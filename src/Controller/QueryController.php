@@ -28,8 +28,9 @@ class QueryController extends AbstractController
     #[Route('/insert', name: 'app_insert', methods: ['POST'])]
     public function insertNode(OGMClient $client, ValidatorInterface $validator) {
         $node = new Node();
-        $node->setType("TWDIS");
-        $node->setExternalId("1234567890");
+        $node
+            ->setType("TWDIS")
+            ->setExternalId("1234567890");
         $errors = $validator->validate($node);
 
         if (count($errors) > 0) {
