@@ -58,6 +58,7 @@ class QueryController extends AbstractController
             $nodesList["nodes"][] = array(
                 "id" => $node->getId(),
                 "label" => $node->getType(),
+                "relatedNodes" => json_encode($node->getRelatedNodes())
             );
         }
 
