@@ -21,9 +21,13 @@ class OGMClient
         return $this->entityManager;
     }
 
-    public function getALlEntities(): array
+    public function getAllEntities(): array
     {
         return $this->entityManager->getRepository(Node::class)->findAll();
     }
 
+    public function getEntity(string $id): Node
+    {
+        return $this->entityManager->getRepository(Node::class)->findOneBy(array('id' => $id));
+    }
 }

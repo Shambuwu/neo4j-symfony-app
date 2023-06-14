@@ -21,7 +21,7 @@ class QueryController extends AbstractController
     public function index(OGMClient $client): Response
     {
         return $this->render('data/index.html.twig', [
-            'results' => $client->getALlEntities()
+            'results' => $client->getAllEntities()
         ]);
     }
 
